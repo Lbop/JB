@@ -1,7 +1,7 @@
 # twitBackEnd calls the Twitter API and retrieves all tweets with "jetblue" keyword
 # unique user/tweet/time tweets are stored in JBcsv.csv in the directory
 # the api is called every 15 minutes
-# Programmed by Derrick Olson 2/19/2016
+
 
 """
 START FUNCTIONS
