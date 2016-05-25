@@ -1,5 +1,5 @@
-# Walking through http://www.laurentluce.com/posts/twitter-sentiment-analysis-using-python-and-nltk/
-# Goal is to make basic sentiment analysis to fully understand concepts
+# Goal is to make basic sentiment analysis tool to fully understand concepts of naive bayes classifiers
+# Based on post here http://www.laurentluce.com/posts/twitter-sentiment-analysis-using-python-and-nltk/
 
 import logging
 logging.captureWarnings(True)
@@ -16,14 +16,12 @@ import nltk
 
 import csv
 
-# Define training set(s), the bigger the better
-
-# open csv, put all tweets and sentiments in a dictionary
-# iterate through dictionary pulling out all postiive and negative values
-# build seperate positive and negative lists
+# Define training sets, the bigger the better
 
 positive_training_tweets = []
 negative_training_tweets = []
+
+# open csv, sort all tweets and sentiments into positive or negative dictionaries
 
 print "Loading training tweets..."
 with open('training_tweets.csv', 'rt') as f:
@@ -38,7 +36,7 @@ with open('training_tweets.csv', 'rt') as f:
             #print row[3]
             #print row[1]
 
-# Define test input to classify
+# Load test input to classify
 
 print "Loading test tweets..."
 test_tweets = []
@@ -51,7 +49,7 @@ with open('test_tweets.csv', 'rt') as f:
 FUNCTIONS 
 '''
 
-# clean up input, put all in lower case and remove any words less than 3 letters
+# clean up input to classify, put in lowercase and remove any words equal to or less than 3 letters
 
 def tweet_filter(list):
     return_list = []
@@ -99,6 +97,8 @@ tweets = tweet_filter(positive_training_tweets+negative_training_tweets)
 
 word_features = get_word_features(get_words_in_tweets(tweets))
 
+""" Classifier training START, commented out because we're using a saved (pickled) classifier """
+
 # prepare training set by extracting features
 
 #print "Training classifier...."
@@ -113,6 +113,8 @@ word_features = get_word_features(get_words_in_tweets(tweets))
 # save_classifier = open('naivebayes.pickle','wb')
 # pickle.dump(classifier, save_classifier)
 # # save_classifier.close()
+
+""" Classifier training END, commented out because we're using a saved (pickled) classifier """
 
 print "Unpickling Classifier..."
 
